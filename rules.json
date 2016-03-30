@@ -1,0 +1,19 @@
+{
+    "中国科学院大学": {
+        "meta": {
+            "url": "http://sep.ucas.ac.cn/slogin",
+            "method": "get",
+            "normalize": {
+                "userid": "userName",
+                "password": "pwd"
+            },
+            "keywords": {
+                "succ": "当前用户所在单位",
+                "fail": "密码错误"
+            }
+        },
+        "data": {
+            "sb": "sb"
+        }
+    }
+}
