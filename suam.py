@@ -39,7 +39,7 @@ class SUAM(object):
 
         rule = self.rules[college]
         meta = rule['meta']
-        data = rule['data']
+        data = rule.get('data', {})
         normalize = meta['normalize']
         keywords = meta['keywords']
 
@@ -50,7 +50,13 @@ class SUAM(object):
         for k in data:
             params[k] = data[k]
 
-        resp = requests.get(meta['url'], params=params)
+        if meta['method'] == 'get':
+            resp = requests.get(meta['url'], params=params)
+        elif meta['method'] == 'post':
+            resp = requests.post(meta['url'], params=params)
+
+ 
+        text = resp.content.decode(resp.encoding)
         if keywords['succ'] in resp.text:
             return 
         if keywords['fail'] in resp.text:
@@ -64,6 +70,6 @@ def auth(*args):
         g_suam.auth(*args)
     except SUAMError, e:
         return e.code
-    except:
+    except Exception, e:
         return -1
     return 0

@@ -12,8 +12,9 @@ with open('users.json', 'r') as f:
 
 class TestSUAM(unittest.TestCase):
 
-    def test_ucas(self):
-        college = u'中国科学院大学'
-        user = g_users[college]
-        self.assertEqual(suam.auth(user['userid'], user['password'], college), 0)
-        self.assertEqual(suam.auth('abc@abc.com', 'abc12345678', college), 1)
+    def test(self):
+        for college in g_users:
+            print 'Testing', college
+            user = g_users[college]
+            self.assertEqual(suam.auth(user['userid'], user['password'], college), 0)
+            self.assertEqual(suam.auth('abc@abc.com', 'abc12345678', college), 1)

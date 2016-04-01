@@ -15,5 +15,19 @@
         "data": {
             "sb": "sb"
         }
+    },
+    "哈尔滨工业大学（威海）": {
+        "meta": {
+            "url": "http://222.194.15.1:7777/pls/wwwbks/bks_login2.login",
+            "method": "post",
+            "normalize": {
+                "userid": "stuid",
+                "password": "pwd"
+            },
+            "keywords": {
+                "succ": "个人信息",
+                "fail": "不能登录"
+            }
+        }
     }
 }
